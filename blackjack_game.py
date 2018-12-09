@@ -21,35 +21,48 @@ class player:
 		self.hand.append(crd)
 		
 	def calc_hand_total(self):
-		t=0
+		self.hand_total=0
 		for i in self.hand:
-			t = t + int(i[0])
-		self.hand_total = self.hand_total + t
+			if str(i[0]) != "A": #or i[0] != 'J' or i[0] != 'Q' or i[0] != 'K':
+				self.hand_total = self.hand_total + int(i[0])
+			else:
+				if str(i[0]) == "A":
+					if (self.hand_total + 10) > 21:
+						self.hand_total = self.hand_total + 1
+					else:
+						self.hand_total = self.hand_total + 10
+				else:
+					self.hand_total = self.hand_total + 10
+		print(self.hand_total)
 
 def display_hands(dealer,player):
 
 
-	print("------------------------------")
-	print ("Dealer Hand: ", end = " ")
+	print("\n------------------------------")
+	print ("Dealer Hand: ", end=" ")
 	print (dealer.hand[0])
 
-	print ("Player Hand: ", end = " ")
+	print ("Your Hand: ", end=" ")
 	for i in player.hand:
 		print (i + " |", end=" ")
-
-	print("\n------------------------------")
+	print("\nYour Total: " + str(player.hand_total))
+	print("------------------------------\n")
 
 
 d = player()
 d.add_card("3S")
 d.add_card("3C")
-#d.add_card("3D")
-d.calc_hand_total()
+d.add_card("3D")
+#d.calc_hand_total()
 
 d1 = player()
 d1.add_card("4D")
-d1.add_card("9S")
-d1.add_card("5D")
+d1.calc_hand_total()
+
+d1.add_card("1S")
+d1.calc_hand_total()
+
+d1.add_card("AD")
 d1.calc_hand_total()
 
 display_hands(d,d1)
