@@ -19,20 +19,37 @@ class player:
 
 	def add_card(self,crd):
 		self.hand.append(crd)
-		print(self.hand)
-
+		
 	def calc_hand_total(self):
 		t=0
 		for i in self.hand:
 			t = t + int(i[0])
 		self.hand_total = self.hand_total + t
 
-#def display_hands():
+def display_hands(dealer,player):
+
+
+	print("------------------------------")
+	print ("Dealer Hand: ", end = " ")
+	print (dealer.hand[0])
+
+	print ("Player Hand: ", end = " ")
+	for i in player.hand:
+		print (i + " |", end=" ")
+
+	print("\n------------------------------")
+
 
 d = player()
 d.add_card("3S")
 d.add_card("3C")
-d.add_card("3D")
+#d.add_card("3D")
 d.calc_hand_total()
 
-print(d.hand_total)
+d1 = player()
+d1.add_card("4D")
+d1.add_card("9S")
+d1.add_card("5D")
+d1.calc_hand_total()
+
+display_hands(d,d1)
