@@ -27,7 +27,7 @@ class player:
 			t = t + int(i[0])
 		self.hand_total = self.hand_total + t
 
-def display_hands()
+#def display_hands():
 
 d = player()
 d.add_card("3S")
