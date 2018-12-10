@@ -33,14 +33,15 @@ class player:
 						self.hand_total = self.hand_total + 10
 				else:
 					self.hand_total = self.hand_total + 10
-		print(self.hand_total)
+		
 
 def display_hands(dealer,player):
 
 
 	print("\n------------------------------")
-	print ("Dealer Hand: ", end=" ")
+	print ("Dealer's Hand: ", end=" ")
 	print (dealer.hand[0])
+	print("------------------------------")
 
 	print ("Your Hand: ", end=" ")
 	for i in player.hand:
@@ -48,21 +49,62 @@ def display_hands(dealer,player):
 	print("\nYour Total: " + str(player.hand_total))
 	print("------------------------------\n")
 
+def overflow(p):
+	if p.hand_total > 21:
+		return True
+	else:
+		return False
 
-d = player()
-d.add_card("3S")
-d.add_card("3C")
-d.add_card("3D")
+
+
+###################################################
+# MAIN PROGRAM
+###################################################
+
+playing = True
+
+while playing == True:
+	cd = deck()
+	cd.shuffle_deck()
+	
+
+	CPU = player() 
+	player1 = player()
+	
+	CPU.add_card(cd.cards_deck.pop())
+	CPU.add_card(cd.cards_deck.pop())
+	player1.add_card(cd.cards_deck.pop())
+	player1.add_card(cd.cards_deck.pop())
+
+	display_hands(CPU,player1)
+
+	print(cd.cards_deck)
+
+
+	print("\nPlay again? (y/n): ", end=" ")
+	ans = input()
+	if ans == 'y':
+		playing = True
+	else:
+		playing = False
+
+
+
+
+#d = player()
+#d.add_card("3S")
+#d.add_card("3C")
+#d.add_card("3D")
 #d.calc_hand_total()
 
-d1 = player()
-d1.add_card("4D")
-d1.calc_hand_total()
+#d1 = player()
+#d1.add_card("4D")
+#d1.calc_hand_total()
 
-d1.add_card("1S")
-d1.calc_hand_total()
+#d1.add_card("1S")
+#d1.calc_hand_total()
 
-d1.add_card("AD")
-d1.calc_hand_total()
+#d1.add_card("AD")
+#d1.calc_hand_total()
 
-display_hands(d,d1)
+#display_hands(d,d1)
