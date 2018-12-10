@@ -23,8 +23,11 @@ class player:
 	def calc_hand_total(self):
 		self.hand_total=0
 		for i in self.hand:
-			if str(i[0]) != "A": #or i[0] != 'J' or i[0] != 'Q' or i[0] != 'K':
-				self.hand_total = self.hand_total + int(i[0])
+			if i[0] != 'A' and i[0] != 'J' and i[0] != 'Q' and i[0] != 'K':
+				if len(i) == 2: 
+					self.hand_total = self.hand_total + int(i[0])
+				else:
+					self.hand_total = self.hand_total + 10		
 			else:
 				if str(i[0]) == "A":
 					if (self.hand_total + 10) > 21:
@@ -73,16 +76,14 @@ while playing == True:
 	
 	CPU.add_card(cd.cards_deck.pop())
 	CPU.add_card(cd.cards_deck.pop())
+	CPU.calc_hand_total()
 	player1.add_card(cd.cards_deck.pop())
 	player1.add_card(cd.cards_deck.pop())
+	player1.calc_hand_total()
 
 	display_hands(CPU,player1)
 
-	print(cd.cards_deck)
-
-
-	print("\nPlay again? (y/n): ", end=" ")
-	ans = input()
+	ans = input("\nPlay again? (y/n): ")
 	if ans == 'y':
 		playing = True
 	else:
