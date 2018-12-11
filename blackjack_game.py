@@ -43,7 +43,7 @@ def display_hands(dealer,player):
 
 	print("\n------------------------------")
 	print ("Dealer's Hand: ", end=" ")
-	print (dealer.hand[0])
+	print (dealer.hand[0] + " | X |")
 	print("------------------------------")
 
 	print ("Your Hand: ", end=" ")
@@ -65,11 +65,14 @@ def overflow(p):
 ###################################################
 
 playing = True
-player_lose = False
-CPU_lose - False
-fold = False
+
 
 while playing == True:
+
+	player_lose = False
+	CPU_lose = False
+	stand = False
+
 	cd = deck()
 	cd.shuffle_deck()
 	
@@ -86,8 +89,18 @@ while playing == True:
 
 	display_hands(CPU,player1)
 
-	#while player_lose == Flase and CPU_lose == Flase and fold == False :
+	while player_lose == False and stand == False :
+		ans = input ("Stand (s) or Hit (h)? ")
+		if ans == 'h':
+			player1.add_card(cd.cards_deck.pop())
+			player1.calc_hand_total()
+			display_hands(CPU,player1)
 
+			if player1.hand_total > 21 :
+				player_lose = True
+
+		else:
+			stand = True
 
 
 
