@@ -86,8 +86,8 @@ while playing == True:
 
 	display_hands(CPU,player1)
 
-	while player_lose == Flase and CPU_lose == Flase and fold == False :
-		
+	#while player_lose == Flase and CPU_lose == Flase and fold == False :
+
 
 
 
