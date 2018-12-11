@@ -65,6 +65,9 @@ def overflow(p):
 ###################################################
 
 playing = True
+player_lose = False
+CPU_lose - False
+fold = False
 
 while playing == True:
 	cd = deck()
@@ -82,6 +85,11 @@ while playing == True:
 	player1.calc_hand_total()
 
 	display_hands(CPU,player1)
+
+	while player_lose == Flase and CPU_lose == Flase and fold == False :
+		
+
+
 
 	ans = input("\nPlay again? (y/n): ")
 	if ans == 'y':
