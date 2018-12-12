@@ -52,6 +52,21 @@ def display_hands(dealer,player):
 	print("\nYour Total: " + str(player.hand_total))
 	print("------------------------------\n")
 
+def display_hands_cpu(dealer,player):
+
+
+	print("\n------------------------------")
+	print ("Dealer's Hand: ", end=" ")
+	for i in CPU.hand:
+		print (i + " |", end=" ")
+	print("\nDealer Total: " + str(CPU.hand_total))
+	print("------------------------------")
+
+	print ("Your Hand: ", end=" ")
+	for i in player.hand:
+		print (i + " |", end=" ")
+	print("\nYour Total: " + str(player.hand_total))
+	print("------------------------------\n")
 
 
 ###################################################
@@ -67,6 +82,7 @@ while playing == True:
 	CPU_lose = False
 	stand = False
 	blackj = False
+	cpu_blackj = False
 
 	cd = deck()
 	cd.shuffle_deck()
@@ -95,14 +111,42 @@ while playing == True:
 				player_lose = True
 			if player1.hand_total == 21 :
 				blackj = True
+				stand = True
 
 		else:
 			stand = True
 
-	while 
+	if player_lose == False:
+		
+		print("Player stands, dealer hits")
+
+		stand = False
+
+		while cpu_blackj == False and stand == False:
+			if CPU.hand_total >= player1.hand_total:
+				player_lose = True
+				stand = True
+			else:
+				CPU.add_card(cd.cards_deck.pop())
+				CPU.calc_hand_total()
+				display_hands_cpu(CPU,player1)
+
+				if CPU.hand_total == 21:
+					player_lose = True
+					stand = True
+				if CPU.hand_total > 21:
+					CPU_lose = True
+					stand = True
+
+
+
+	print("\n==============================\n")
+	display_hands_cpu(CPU,player1)
 
 	if player_lose == True :
-		print("You Lose!")
+		print("You lose!")
+	if CPU_lose == True:
+		print("You win!")
 
 	ans = input("\nPlay again? (y/n): ")
 	if ans == 'y':
