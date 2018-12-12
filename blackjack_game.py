@@ -52,12 +52,6 @@ def display_hands(dealer,player):
 	print("\nYour Total: " + str(player.hand_total))
 	print("------------------------------\n")
 
-def overflow(p):
-	if p.hand_total > 21:
-		return True
-	else:
-		return False
-
 
 
 ###################################################
@@ -72,6 +66,7 @@ while playing == True:
 	player_lose = False
 	CPU_lose = False
 	stand = False
+	blackj = False
 
 	cd = deck()
 	cd.shuffle_deck()
@@ -98,11 +93,16 @@ while playing == True:
 
 			if player1.hand_total > 21 :
 				player_lose = True
+			if player1.hand_total == 21 :
+				blackj = True
 
 		else:
 			stand = True
 
+	while 
 
+	if player_lose == True :
+		print("You Lose!")
 
 	ans = input("\nPlay again? (y/n): ")
 	if ans == 'y':
