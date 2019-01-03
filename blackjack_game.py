@@ -113,7 +113,7 @@ while playing == True:
 				blackj = True
 				stand = True
 
-		else:
+		elif ans=='s':
 			stand = True
 
 	if player_lose == False:
@@ -149,28 +149,11 @@ while playing == True:
 		print("You win!")
 
 	ans = input("\nPlay again? (y/n): ")
+	while ans != 'y' and ans != 'n':
+			ans = input("\nPlay again? (y/n): ")
+
 	if ans == 'y':
 		playing = True
-	else:
+	elif ans=='n':
 		playing = False
 
-
-
-
-#d = player()
-#d.add_card("3S")
-#d.add_card("3C")
-#d.add_card("3D")
-#d.calc_hand_total()
-
-#d1 = player()
-#d1.add_card("4D")
-#d1.calc_hand_total()
-
-#d1.add_card("1S")
-#d1.calc_hand_total()
-
-#d1.add_card("AD")
-#d1.calc_hand_total()
-
-#display_hands(d,d1)
