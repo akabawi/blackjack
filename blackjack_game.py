@@ -45,12 +45,14 @@ def display_hands(dealer,player):
 	print ("Dealer's Hand: ", end=" ")
 	print (dealer.hand[0] + " | X |")
 	print("------------------------------")
+	time.sleep(2)
 
 	print ("Your Hand: ", end=" ")
 	for i in player.hand:
 		print (i + " |", end=" ")
 	print("\nYour Total: " + str(player.hand_total))
 	print("------------------------------\n")
+	time.sleep(2)
 
 def display_hands_cpu(dealer,player):
 
@@ -61,13 +63,14 @@ def display_hands_cpu(dealer,player):
 		print (i + " |", end=" ")
 	print("\nDealer Total: " + str(CPU.hand_total))
 	print("------------------------------")
+	time.sleep(2)
 
 	print ("Your Hand: ", end=" ")
 	for i in player.hand:
 		print (i + " |", end=" ")
 	print("\nYour Total: " + str(player.hand_total))
 	print("------------------------------\n")
-
+	time.sleep(2)
 
 ###################################################
 # MAIN PROGRAM
@@ -139,9 +142,10 @@ while playing == True:
 					stand = True
 
 
-
+	time.sleep(2)
 	print("\n==============================\n")
 	display_hands_cpu(CPU,player1)
+	time.sleep(2)
 
 	if player_lose == True :
 		print("You lose!")
